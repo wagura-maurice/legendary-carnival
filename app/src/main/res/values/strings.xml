@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MyReader</string>
+    <string name = "explanation">Please tap the Card</string>
+</resources>
