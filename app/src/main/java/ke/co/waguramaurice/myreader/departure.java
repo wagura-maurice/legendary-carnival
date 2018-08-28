@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.UnsupportedEncodingException;
@@ -25,10 +26,9 @@ public class departure extends Activity implements OnClickListener {
     public static final String TAG = "NfcDemo";
     public static String mess = "";
     private Button departure_sendsms;
-    private TextView iTextView;
-    private Button imageButton_back;
     private NfcAdapter mNfcAdapter;
     private TextView mTextView;
+    private EditText mEditText;
 
     private class NdefReaderTask extends AsyncTask<Tag, Void, String> {
         private NdefReaderTask() {
@@ -65,9 +65,8 @@ public class departure extends Activity implements OnClickListener {
 
         protected void onPostExecute(String result) {
             if (result != null) {
-                departure.this.mTextView.setText("Please confirm that the Student ID is: " + result);
-                departure.this.mTextView.setTextColor(-65536);
-                departure.mess = result;
+                mEditText.setText(result);
+
             }
         }
     }
@@ -75,12 +74,13 @@ public class departure extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.departure);
+        this.mEditText = (EditText) findViewById(R.id.admit);
         this.mTextView = (TextView) findViewById(R.id.textView1);
         this.mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         this.departure_sendsms = (Button) findViewById(R.id.buttonsend);
         this.departure_sendsms.setOnClickListener(this);
         if (this.mNfcAdapter == null) {
-            Toast.makeText(this, "This device doesn't support NFC.", 1).show();
+            Toast.makeText(this, "This device doesn't support NFC.", Toast.LENGTH_LONG).show();
             finish();
             return;
         }
