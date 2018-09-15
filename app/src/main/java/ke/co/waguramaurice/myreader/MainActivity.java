@@ -9,24 +9,24 @@ import android.widget.Button;
 
 public class MainActivity extends Activity implements OnClickListener {
 
-    private Button departure;
+    private Button one;
+
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.departure = (Button) findViewById(R.id.button1);
-        this.departure.setOnClickListener(this);
+        this.one = (Button) findViewById(R.id.button1);
+        this.one.setOnClickListener(this);
+
 
     }
 
     public void onClick(View view) {
         int id = view.getId();
-        if (id == R.id.button2) {
-            startActivity(new Intent(this, ke.co.waguramaurice.myreader.departure.class));
-            finish();
-        } else if (id == R.id.button1) {
-            startActivity(new Intent(this, departure.class));
+
+        if (id == R.id.button1) {
+            startActivity(new Intent(this, first.class));
             finish();
         }
 

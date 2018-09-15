@@ -2,33 +2,46 @@ package ke.co.waguramaurice.myreader;
 
 import android.app.Activity;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentFilter.MalformedMimeTypeException;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
-public class departure extends Activity implements OnClickListener {
+public class first extends Activity implements OnClickListener {
     public static final String MIME_TEXT_PLAIN = "text/plain";
     public static final String TAG = "NfcDemo";
     public static String mess = "";
-    private Button departure_sendsms;
+    private Button back;
+    private Button sendsms;
     private NfcAdapter mNfcAdapter;
     private TextView mTextView;
-    private EditText mEditText;
+    EditText ACID, ADMIN;
+    String activity_id, admission_no;
 
     private class NdefReaderTask extends AsyncTask<Tag, Void, String> {
         private NdefReaderTask() {
@@ -65,7 +78,10 @@ public class departure extends Activity implements OnClickListener {
 
         protected void onPostExecute(String result) {
             if (result != null) {
-                mEditText.setText(result);
+                ADMIN.setText(result);
+                first.this.mTextView.setText("The Student's Adm. Number is: " + result);
+                first.this.mTextView.setTextColor(-65536);
+                first.mess = result;
 
             }
         }
@@ -73,12 +89,15 @@ public class departure extends Activity implements OnClickListener {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.departure);
-        this.mEditText = (EditText) findViewById(R.id.admit);
+        setContentView(R.layout.activity_one);
+        this.ACID = (EditText) findViewById(R.id.activity_id);
+        this.ADMIN = (EditText) findViewById(R.id.admission_no);
         this.mTextView = (TextView) findViewById(R.id.textView1);
         this.mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        this.departure_sendsms = (Button) findViewById(R.id.buttonsend);
-        this.departure_sendsms.setOnClickListener(this);
+        this.back = (Button) findViewById(R.id.back);
+        this.back.setOnClickListener(this);
+
+
         if (this.mNfcAdapter == null) {
             Toast.makeText(this, "This device doesn't support NFC.", Toast.LENGTH_LONG).show();
             finish();
@@ -87,20 +106,48 @@ public class departure extends Activity implements OnClickListener {
         if (this.mNfcAdapter.isEnabled()) {
             this.mTextView.setText(R.string.explanation);
         } else {
-            this.mTextView.setText("NFC is disabled.");
+            this.mTextView.setText("ALERT!! NFC is Disabled!");
+            this.mTextView.setTextColor(-65536);
+            Toast.makeText(this, "Enable NFC in Settings.", Toast.LENGTH_LONG).show();
+
+
         }
         handleIntent(getIntent());
     }
 
     public void onClick(View view) {
         int id = view.getId();
-        if (id == R.id.buttonsend) {
-            startService(new Intent(getApplicationContext(), MainActivity.class));
-            startActivity(new Intent(this, departure.class));
+        if (id == R.id.back) {
+            startActivity(new Intent(this, MainActivity.class));
             finish();
+
         }
 
     }
+
+    public void push(View view) {
+        activity_id = ACID.getText().toString();
+        admission_no = ADMIN.getText().toString();
+        String method = "addl";
+        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+        backgroundWorker.execute(method, activity_id, admission_no);
+        startActivity(new Intent(this, first.class));
+        finish();
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(), "You Require Internet Connection!", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.BOTTOM, 0, 10);
+            toast.show();
+
+        }
+
+
+    }
+
 
     protected void onResume() {
         super.onResume();
