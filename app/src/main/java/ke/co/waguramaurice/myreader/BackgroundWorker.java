@@ -32,7 +32,7 @@ public class BackgroundWorker extends AsyncTask<String,Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        String find_url = "http://35.227.33.73/qwetu_form/index.php";
+        String find_url = "https://sms-qwetu.cf/api/v1/qwetu/store";
 
         {
 
@@ -65,7 +65,7 @@ public class BackgroundWorker extends AsyncTask<String,Void, String> {
 
         }
 
-        return "Error in Communication. Try again later.";
+        return "Unable to Send.";
     }
 
     @Override

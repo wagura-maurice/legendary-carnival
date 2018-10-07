@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">Njumbi Boys</string>
+    <string name="app_name">SmartApp</string>
     <string name = "explanation">Please swipe the student\'s Smart_Card.</string>
-    <string name="acid1">001</string>
-    <string name="acid2">002</string>
-    <string name="acid3">003</string>
-    <string name="acid4">004</string>
-    <string name="acid5">005</string>
-    <string name="acid6">006</string>
-    <string name="acid7">007</string>
-    <string name="acid8">008</string>
+    <string name="acid1">2018001</string>
+    <string name="acid2">2018002</string>
+    <string name="acid3">2018003</string>
+    <string name="acid4">2018004</string>
+    <string name="acid5">2018005</string>
+    <string name="acid6">2018006</string>
+    <string name="acid7">2018007</string>
+    <string name="acid8">2018008</string>
 
 </resources>

@@ -22,11 +22,11 @@
     <android.support.v7.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="4.6"
         app:alignmentMode="alignMargins"
         app:columnCount="3"
         app:columnOrderPreserved="false"
-        app:rowCount="3">
+        app:rowCount="2">
 
         <!--Row 1-->
         <!--Column1-->
@@ -208,27 +208,34 @@
 
         </android.support.v7.widget.CardView>
 
-        <!--Row 3-->
+
+
+
+
+
+    </android.support.v7.widget.GridLayout>
+
+
+    <!--arrivals-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.4"
+        app:alignmentMode="alignMargins"
+        app:columnCount="3"
+        app:columnOrderPreserved="false"
+        app:rowCount="1">
+
+        <!--Row 1-->
         <!--Column1-->
-
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-
-            android:alpha="0"
-            app:cardElevation="8dp"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1">
-
-
-
-        </android.support.v7.widget.CardView>
-
-        <!--Row 3-->
-        <!--Column2-->
 
         <android.support.v7.widget.CardView
             android:layout_width="0dp"
@@ -257,8 +264,8 @@
 
         </android.support.v7.widget.CardView>
 
-        <!--Row 3-->
-        <!--Column3-->
+        <!--Row 1-->
+        <!--Column2-->
 
         <android.support.v7.widget.CardView
             android:layout_width="0dp"
@@ -287,21 +294,36 @@
 
         </android.support.v7.widget.CardView>
 
+        <!--Row 1-->
+        <!--Column3-->
 
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
 
+            android:alpha="0"
+            app:cardElevation="8dp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
 
+                <Button
+                    android:id="@+id/button9"
+                    android:layout_width="94dp"
+                    android:layout_height="116dp" />
+            </LinearLayout>
 
+        </android.support.v7.widget.CardView>
     </android.support.v7.widget.GridLayout>
-
-
-    <!--footer-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-    </RelativeLayout>
 
 
 </LinearLayout>
