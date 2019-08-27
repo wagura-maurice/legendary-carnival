@@ -65,7 +65,7 @@ public class BackgroundWorker extends AsyncTask<String,Void, String> {
 
         }
 
-        return "Unable to Send.";
+        return "Unable to Send Message.";
     }
 
     @Override

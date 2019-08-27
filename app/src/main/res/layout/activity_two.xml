@@ -87,12 +87,12 @@
 
         <Button
             android:id="@+id/send1"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="170dp"
             android:layout_height="60dp"
             android:layout_centerInParent="true"
             android:alpha="0"
-            android:onClick="push"
-            />
+            android:onClick="push" />
     </RelativeLayout>
 
 </LinearLayout>

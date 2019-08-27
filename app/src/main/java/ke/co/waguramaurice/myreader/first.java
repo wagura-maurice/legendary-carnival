@@ -79,7 +79,7 @@ public class first extends Activity implements OnClickListener {
         protected void onPostExecute(String result) {
             if (result != null) {
                 ADMIN.setText(result);
-                first.this.mTextView.setText("The Student's Adm. Number is: " + result);
+                first.this.mTextView.setText("Student Registration Number: " + result);
                 first.this.mTextView.setTextColor(-65536);
                 first.mess = result;
 
@@ -139,7 +139,7 @@ public class first extends Activity implements OnClickListener {
         if (networkInfo != null && networkInfo.isConnected()) {
 
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(), "You Require Internet Connection!", Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(getApplicationContext(), "Internet Connection Required!", Toast.LENGTH_LONG);
             toast.setGravity(Gravity.BOTTOM, 0, 10);
             toast.show();
 
